@@ -4,265 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
 
-<style>
-        *{
-            box-sizing: border-box;
-        }
+    <div class="title_wrapper">
+        <h1 class="title">Brel Hard G6 meteors placment</h1>
+        <p class="dps">with average dps group (~ 15x / mins)</p>
+    </div>
 
-        body {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            position: relative;
-            
-        }
+    <div class="set_timer">Next set of Blue meteors in ~ <span id="time"></span> seconds!</div>
+    <p class="hpbar"></p>
 
-    .tile_wapper {
-    
-        width: 580px;
-        height: 580px;       
-        transform: rotate(45deg);
-
-    }
-.tile_row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    max-height: calc(580px / 3);
-}
-.tile {
-    background-color: var(--untouched);
-    flex: 1;
-    border: 5px solid var(--deadtile);
-    max-height: calc(580px /3);
-    border-right: none;
-    border-bottom: none;
-    position: relative;
-
-}
-.btn_wrapper{ 
-    position: absolute;
-left: 35%;
-display: flex;
-flex-direction: row;
-bottom: 6%;
-width: 30%;
-justify-content: space-between;
-
-}
-
-.blue {
-    position: absolute;
-    z-index: 9;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--blue);
-    left: 50%;
-    top: 50%;
-}
-.blue2 {
-    position: absolute;
-    z-index: 9;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--blue);
-    left: 25%;
-    top: 25%;
-}
-
-.gold {
-    position: absolute;
-    z-index: 9;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #ff710c;
-    left: 50%;
-    top: 50%;
-}
-
-.myButton {
-	box-shadow: 0px 1px 0px 0px #fff6af;
-	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-	background-color:#ffec64;
-	border-radius:6px;
-	border:1px solid #ffaa22;
-	display:inline-block;
-	cursor:pointer;
-	color:#333333;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:12px 36px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffee66;
-    margin: 20px;
-
-}
-.myButton:hover {
-	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-	background-color:#ffab23;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
-.myButton.start {
-    position: absolute;
-    left: -200px;
-}
-
-
- :root {
-            --yellow: #ffc600;
-            --blue: #00a6ff;
-            --deadtile:	#000000;
-            --onehp:#221b27;
-            --twohp:#32243c;
-            --untouched:#3e274f;
-            
-
-   }
-
-      
-   .info {
-    position: absolute;
-    border: 1px solid black;
-
-    left: 5%;
-    bottom: 20%;
-    text-align: center;
-    padding: 20px 50px;
-   }
-.info h4 {
-    font-size: 20px;
-}
-   .info span {
-    display: block;
-   }
-   .info .meteor{
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        margin-right: 10px;
-        position: relative;
-        display: block;
-   }
-   .info .item .biles {
-    width: 30px;
-        height: 30px;
-        position: relative;
-        display: block;
-        margin-right: 10px;
-        
-   }
-
-   .info .item {
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-   }
-
-
-   .info .meteor.ibluedot {
-    background: #00a6ff;
-   }
-   .info .meteor.iyellowdot {
-    background: #ff710c;
-   }
-
-   .info .ifull{
-    background-color: #3e274f;
-}
-
-.info .itwo {
-    background-color: #9ACD32;
-}
-.info .ione {
-    background-color: #FFA500;
-}
-.info .izero {
-    background-color: #000000;
-}
-.title_wrapper {
-    position: absolute;
-    left: 5%;
-    top: 10%;
-}
-.hpbar {
-    position: absolute;
-    right: 10%;
-    top: 15%;
-    font-size: 50px;
-    color: goldenrod;
-}
-.set_timer {
-    position: absolute;
-right: 10%;
-top: 30%;
-font-size: 20px;
-}
-
-#time {
-    font-size: 40px;
-    color: var(--blue);
-    margin: 0 15px;
-}
-    </style>
-
-<div class="btn_wrapper">
-    <button class="myButton start">Start</button>
-    <!--
-            <button class="myButton start">Start</button>
-        <button class="myButton prev">Prev</button>-->
-    <button class="myButton next">Next</button>
-    <button class="myButton reset">Reset</button>
-</div>
-<div class="title_wrapper">
-    <h1 class="title">Brel Hard G6 meteors placment</h1>
-    <p class="dps">with average dps group (~ 15x / mins)</p>
-</div>
-<div class="set_timer">Next set of Blue meteors in ~ <span id="time"></span> seconds!</div>
-<p class="hpbar"></p>
-
-<div class="info">
-    <h4>Info</h4>
-<div class="item">
-    <span class="meteor ibluedot"></span>
-    <p>blue meteor</p>
-</div>
-<div class="item">
-    <span class="meteor iyellowdot"></span>
-    <p>gold meteor</p>
-</div>
-<div class="item">
-    <span class="biles ifull"></span>
-    <p>full hp tile</p>
-</div>
-<div class="item">
-    <span class="biles itwo"></span>
-    <p>two hp tile</p>
-</div>
-<div class="item">
-    <span class="biles ione"></span>
-    <p>one hp tile</p>
-</div>
-<div class="item">
-    <span class="biles izero"></span>
-    <p>dead tile</p>
-</div>
+    <div class="btn_wrapper">
+        <button class="myButton start">Start</button>
+        <button class="myButton next">Next</button>
+        <button class="myButton reset">Reset</button>
+    </div>
 
  
-</div>
+
 
     <div class="tile_wapper">
         <div class="tile_row">
@@ -282,314 +44,35 @@ font-size: 20px;
         </div>
     </div>
 
-    <script>
-
-        // colors
-        const tile = document.querySelector('.tile');
-
-        const yellow ='#ffc600';
-        const blue = '#00a6ff';
-        const zerohp =  '#000000';
-        const onehp =  '#FFA500';
-        const twohp = '#9ACD32';
-        const fullhp = '#3e274f';
-        // btns
-      const btnStart =  document.querySelector('.start');
-      const btnPrev =  document.querySelector('.prev');
-      const btnNext =  document.querySelector('.next');
-      const btnReset =  document.querySelector('.reset');
-      // biles
-      const tTwelve =  document.querySelector('.twelve');
-      const tOne =  document.querySelector('.one');
-      const tThree =  document.querySelector('.three');
-      const tEleven =  document.querySelector('.eleven');
-      const tZero =  document.querySelector('.zero');
-      const tFive =  document.querySelector('.five');
-      const tNine =  document.querySelector('.nine');
-      const tSeven =  document.querySelector('.seven');
-      const tSix =  document.querySelector('.six');
-
-      // create meteors
-      const bMeteor = document.createElement('span');
-      bMeteor.setAttribute("class", "blue");  
-      const bMeteor2 = document.createElement('span');
-      bMeteor2.setAttribute("class", "blue2")  
-      const bMeteor3 = document.createElement('span');
-      bMeteor3.setAttribute("class", "blue");  
-      const bMeteor4 = document.createElement('span');
-      bMeteor4.setAttribute("class", "blue2")  
-      const gMeteor = document.createElement('span');
-      gMeteor.setAttribute("class", "gold")
-
-    // hp bar
-    const hpBar = document.querySelector('.hpbar')
-  
-
-    function afterFirstSet( ) {
-        tEleven.appendChild(bMeteor);
-            tTwelve.appendChild(bMeteor2);
-            tSix.style.background = zerohp;
-            tSeven.style.background = zerohp;
-            tFive.style.background = zerohp;
-            tNine.style.background = twohp;
-            tEleven.style.background = twohp;
-            tTwelve.style.background = twohp;
-            tOne.style.background = onehp;
-            hpBar.innerHTML = 'Around 173x bars';
-    }
-
     
-    function afterSecondSet( ) {
-        tEleven.removeChild(bMeteor);
-            tTwelve.removeChild(bMeteor2);
-          tEleven.appendChild(bMeteor3);
-        tEleven.appendChild(bMeteor2);
-            tSix.appendChild(bMeteor);
-            tSix.style.background = fullhp;
-            tSeven.style.background = fullhp;
-            tFive.style.background = fullhp;
-            tNine.style.background = twohp;
-            tEleven.style.background = onehp;
-            tTwelve.style.background = onehp;
-            tOne.style.background = onehp;
-            hpBar.innerHTML = 'Around 158x bars';
-    }
 
-    function afterThirdSet( ) {
-        tSeven.appendChild(bMeteor);
-            tSeven.appendChild(bMeteor2);
-            tFive.appendChild(bMeteor3);
-            tFive.appendChild(bMeteor4);
-            tSix.style.background = twohp;
-            tSeven.style.background = fullhp;
-            tFive.style.background = fullhp;
-            tNine.style.background = twohp;
-            tEleven.style.background = zerohp;
-            tTwelve.style.background = onehp;
-            tOne.style.background = onehp;
-            hpBar.innerHTML = 'Around 143x bars';
-    }
-
-
-    function afterFourthdSet( ) {
-        tSeven.removeChild(bMeteor);
-            tSeven.removeChild(bMeteor2);
-            tFive.removeChild(bMeteor3);
-            tFive.removeChild(bMeteor4);
-        tTwelve.appendChild(gMeteor);
-            tSix.style.background = twohp;
-            tSeven.style.background = onehp;
-            tFive.style.background = onehp;
-            tNine.style.background = twohp;
-            tEleven.style.background = zerohp;
-            tTwelve.style.background = onehp;
-            tOne.style.background = onehp;
-            hpBar.innerHTML = 'Around 138x bars';
-    }
-
-    function afterFifthdSet( ) {
-        tEleven.appendChild(bMeteor);
-        tEleven.appendChild(bMeteor2);
-        tSix.appendChild(bMeteor3);
-        tTwelve.removeChild(gMeteor);
-    
-            tSix.style.background = twohp;
-            tSeven.style.background = onehp;
-            tFive.style.background = onehp;
-            tNine.style.background = twohp;
-            tEleven.style.background = fullhp;
-            tTwelve.style.background = zerohp;
-            tOne.style.background = zerohp;
-            hpBar.innerHTML = 'Around 123x bars';
-
-    }
-
-    function afterShandiSet( ) {
-
-        tTwelve.appendChild(bMeteor);
-        tOne.appendChild(bMeteor2);
-        tFive.appendChild(bMeteor3);
-        tFive.appendChild(bMeteor4);
-            tSix.style.background = onehp;
-            tSeven.style.background = onehp;
-            tFive.style.background = onehp;
-            tNine.style.background = twohp;
-            tEleven.style.background = onehp;
-            tTwelve.style.background = fullhp;
-            tOne.style.background = fullhp;
-            hpBar.innerHTML = 'Around 100x bars';
-    }
-
-    function afterShandiOneSet( ) {
-        tTwelve.removeChild(bMeteor);
-        tOne.removeChild(bMeteor2);
-        tFive.removeChild(bMeteor3);
-        tFive.removeChild(bMeteor4);
-        tSix.appendChild(gMeteor);
-            tSix.style.background = onehp;
-            tSeven.style.background = onehp;
-            tFive.style.background = zerohp;
-            tNine.style.background = twohp;
-            tEleven.style.background = onehp;
-            tTwelve.style.background = twohp;
-            tOne.style.background = twohp;
-            hpBar.innerHTML = 'Around 88x bars';
-    }
-
-    function afterShandiTwoSet( ) {
-        tTwelve.appendChild(bMeteor);
-        tOne.appendChild(bMeteor2);
-        tThree.appendChild(bMeteor3);
-        tSix.removeChild(gMeteor);
-            tSix.style.background = zerohp;
-            tSeven.style.background = zerohp;
-            tFive.style.background = zerohp;
-            tNine.style.background = twohp;
-            tEleven.style.background = onehp;
-            tTwelve.style.background = twohp;
-            tOne.style.background = twohp;
-            hpBar.innerHTML = 'Around 76x bars';
-    }
-
-    function afterShandiThreeSet( ) {
-
-        tTwelve.removeChild(bMeteor);
-        tOne.removeChild(bMeteor2);
-        tThree.removeChild(bMeteor3);
-        tEleven.appendChild(bMeteor);
-        tEleven.appendChild(bMeteor2);
-        tSeven.appendChild(bMeteor4);
-        tSix.appendChild(bMeteor3);
-            tSix.style.background = fullhp;
-            tSeven.style.background = fullhp;
-            tFive.style.background = fullhp;
-            tNine.style.background = twohp;
-            tEleven.style.background = onehp;
-            tTwelve.style.background = onehp;
-            tOne.style.background = onehp;
-            tThree.style.background = twohp;
-            hpBar.innerHTML = 'Around 64x bars';
-    }
-
-    function afterShandiFourthSet( ) {
-        tEleven.removeChild(bMeteor);
-        tEleven.removeChild(bMeteor2);
-        tSeven.removeChild(bMeteor4);
-        tSix.removeChild(bMeteor3);
-        tFive.appendChild(bMeteor2);
-        tSeven.appendChild(bMeteor4);
-        tSix.appendChild(bMeteor3);
-            tSix.style.background = twohp;
-            tSeven.style.background = twohp;
-            tFive.style.background = fullhp;
-            tNine.style.background = twohp;
-            tEleven.style.background = zerohp;
-            tTwelve.style.background = onehp;
-            tOne.style.background = onehp;
-            tThree.style.background = twohp;
-            hpBar.innerHTML = 'Around 52x bars';
-    }
-
-
-
-
-function afterShandiFifthSet( ) {
-    tFive.removeChild(bMeteor2);
-        tSeven.removeChild(bMeteor4);
-        tSix.removeChild(bMeteor3);
-    tEleven.appendChild(bMeteor);
-  tEleven.appendChild(bMeteor2);
-  tNine.appendChild(bMeteor4);
-  tFive.appendChild(bMeteor3);
-      tSix.style.background = onehp;
-      tSeven.style.background = onehp;
-      tFive.style.background = twohp;
-      tNine.style.background = twohp;
-      tEleven.style.background = fullhp;
-      tTwelve.style.background = onehp;
-      tOne.style.background = onehp;
-      tThree.style.background = twohp;
-      hpBar.innerHTML = 'Around 40x bars';
-}
-
-
-function afterShandiSixSet( ) {
-    tEleven.removeChild(bMeteor);
-  tEleven.removeChild(bMeteor2);
-  tNine.removeChild(bMeteor4);
-  tFive.removeChild(bMeteor3);
-    tTwelve.appendChild(gMeteor);
-      tSix.style.background = onehp;
-      tSeven.style.background = onehp;
-      tFive.style.background = onehp;
-      tNine.style.background = onehp;
-      tEleven.style.background = onehp;
-      tTwelve.style.background = onehp;
-      tOne.style.background = onehp;
-      tThree.style.background = twohp;
-      hpBar.innerHTML = 'Around 38x bars';
-}
-
-const array_of_functions = [
-afterFirstSet,
-afterSecondSet,
-afterThirdSet,
-afterFourthdSet,
-afterFifthdSet,
-afterShandiSet,
-afterShandiOneSet,
-afterShandiTwoSet,
-afterShandiThreeSet,
-afterShandiFourthSet,
-afterShandiFifthSet,
-afterShandiSixSet
-]
-   
-
-function reset() {
-    window.location.reload();
-}
-
-var interval;
-
-
-function countDown() {
-    var incomeTicker = 52;
-    interval = setInterval(function(){
- if (incomeTicker > 0)
-	 incomeTicker--;
-      document.querySelector("#time").innerHTML =  incomeTicker ;
-if (incomeTicker <= 0)
-clearInterval(interval);
-}, 1000);
-} 
-
-
-let i = 0;
-
-
-    btnStart.addEventListener('click', function () {
-        
-        array_of_functions[0]();
-        countDown();
-        
-    });
-
-
-
-    btnNext.addEventListener('click', function(){
-        i++;
-       array_of_functions[i]();
-       document.querySelector("#time").innerHTML =  '';
-
-        clearInterval(interval);
-        countDown();
-    });
-
-    btnReset.addEventListener('click',  reset)
-
-
-
-    </script>
+<div class="info">
+    <h4>Info</h4>
+    <div class="item">
+        <span class="meteor ibluedot"></span>
+        <p>blue meteor</p>
+    </div>
+    <div class="item">
+        <span class="meteor iyellowdot"></span>
+        <p>gold meteor</p>
+    </div>
+    <div class="item">
+        <span class="biles ifull"></span>
+        <p>full hp tile</p>
+    </div>
+    <div class="item">
+        <span class="biles itwo"></span>
+        <p>two hp tile</p>
+    </div>
+    <div class="item">
+        <span class="biles ione"></span>
+        <p>one hp tile</p>
+    </div>
+    <div class="item">
+        <span class="biles izero"></span>
+        <p>dead tile</p>
+    </div>                  
+</div>
+    <script src="js.js"></script>
 </body>
 </html>
